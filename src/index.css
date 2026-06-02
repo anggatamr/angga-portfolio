@@ -8,6 +8,21 @@
   
   --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --section-padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+
+  /* ── V2 Additions ── */
+  --color-accent-2: #0066FF;
+  --color-surface: #F7F7F7;
+  --color-surface-2: #EFEFEF;
+  --color-muted: #777777;
+  --color-border: rgba(17,17,17,0.08);
+  --color-badge-bg: rgba(230, 57, 70, 0.08);
+  --color-badge-text: #C1121F;
+  --badge-blue-bg: rgba(0, 102, 255, 0.08);
+  --badge-blue-text: #0052CC;
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-hover: 0 16px 48px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.06);
+  --radius-card: 16px;
+  --radius-badge: 6px;
 }
 
 * {
@@ -356,4 +371,396 @@ nav {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════
+   V2 ADDITIONS — Stack Badges
+   ═══════════════════════════════════════════ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radius-badge);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--color-badge-bg);
+  color: var(--color-badge-text);
+  border: 1px solid rgba(230, 57, 70, 0.15);
+  white-space: nowrap;
+}
+
+.badge-blue {
+  background: var(--badge-blue-bg);
+  color: var(--badge-blue-text);
+  border-color: rgba(0, 102, 255, 0.15);
+}
+
+.badge-neutral {
+  background: rgba(17,17,17,0.05);
+  color: #444;
+  border-color: rgba(17,17,17,0.1);
+}
+
+.badge-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════
+   V2 ADDITIONS — Impact Callout
+   ═══════════════════════════════════════════ */
+
+.impact-line {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-left: 3px solid var(--color-accent);
+  padding-left: 0.75rem;
+  margin: 1rem 0 0;
+}
+
+/* ═══════════════════════════════════════════
+   V2 ADDITIONS — Stats / Metrics Grid
+   ═══════════════════════════════════════════ */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2rem;
+  margin: 4rem 0;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════
+   V2 ADDITIONS — Research / Publication Card
+   ═══════════════════════════════════════════ */
+
+.research-card {
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.research-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--color-accent);
+}
+
+.research-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.research-year {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.research-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0.5rem 0;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+
+.research-journal {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════
+   V2 ADDITIONS — Filter Bar
+   ═══════════════════════════════════════════ */
+
+.filter-bar {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 2px solid var(--color-text);
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border-radius: 0;
+  font-family: var(--font-family);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+.filter-btn.active-red {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+/* ═══════════════════════════════════════════
+   V2 ADDITIONS — Labeled Divider
+   ═══════════════════════════════════════════ */
+
+.labeled-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 6rem 0 3rem;
+}
+
+.labeled-divider-line {
+  flex: 1;
+  height: 2px;
+  background: var(--color-text);
+}
+
+.labeled-divider-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════
+   V2 ADDITIONS — Status Badge (Open to Work)
+   ═══════════════════════════════════════════ */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  margin-bottom: 1.5rem;
+}
+
+.status-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* ═══════════════════════════════════════════
+   V2 ADDITIONS — GitHub Link Button on Cards
+   ═══════════════════════════════════════════ */
+
+.card-links {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.card-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1.5px solid var(--color-text);
+  background: transparent;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.card-link-btn:hover {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+.card-link-btn.primary {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+.card-link-btn.primary:hover {
+  background: #c92c3a;
+  border-color: #c92c3a;
+}
+
+/* ═══════════════════════════════════════════
+   V2 ADDITIONS — Accessibility
+   ═══════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-content { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}
+
+/* ═══════════════════════════════════════════
+   V2 ADDITIONS — Responsive Fixes
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 640px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .filter-bar {
+    gap: 0.5rem;
+  }
+  .filter-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.7rem;
+  }
+  .research-card {
+    padding: 1.5rem;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   V2 ADDITIONS — Research Bento Grid
+   ═══════════════════════════════════════════ */
+
+.research-bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .research-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .research-bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bento-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.25rem;
+  border-radius: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-smooth);
+}
+
+.bento-item:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+/* Bento Span Modifiers */
+@media (min-width: 1024px) {
+  .bento-span-2 {
+    grid-column: span 2;
+  }
+  .bento-span-1 {
+    grid-column: span 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .bento-span-2-tablet {
+    grid-column: span 2;
+  }
+}
+
+.bento-item.featured {
+  background: linear-gradient(135deg, #111111 0%, #1e1e1e 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.bento-item.featured .research-title {
+  color: #ffffff;
+  text-transform: none;
+  letter-spacing: -0.02em;
+}
+
+.bento-item.featured .research-journal {
+  color: #aaaaaa;
+}
+
+.bento-item.featured .research-year {
+  color: var(--color-accent);
+}
+
+.bento-item.featured .badge {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.bento-item.featured .badge-blue {
+  background: rgba(0, 102, 255, 0.15);
+  color: #3385ff;
+  border-color: rgba(0, 102, 255, 0.25);
 }
