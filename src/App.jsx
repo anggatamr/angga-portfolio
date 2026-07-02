@@ -45,7 +45,7 @@ const experiences = [
 const stats = [
   { number: "10+", label: "Projects Shipped" },
   { number: "38", label: "Provinces Mapped" },
-  { number: "6", label: "ML Models Deployed" },
+  { number: "7", label: "ML Models Deployed" },
 ];
 
 const categories = [
@@ -66,6 +66,17 @@ const projects = [
     impact: "Narrating data for 1000+ Indonesian SMEs",
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
     link: "https://my-data-akucerita-layb7wpln-anggatamrs-projects.vercel.app/"
+  },
+  {
+    title: "NarraSeed — Temporal Narrative Intelligence",
+    category: "ml",
+    tag: "Temporal AI / Data Storytelling",
+    desc: "An AI-powered intelligence platform that transforms time-series CSV data into interactive, structured narrative stories. Integrates PELT changepoint detection, Dynamic Time Warping (DTW) arc classification, and grounded Qwen2.5 LLM synthesis.",
+    stack: ["Python", "FastAPI", "Ollama", "Azure AI Search", "D3.js"],
+    impact: "First place track contender for Agents League Hackathon 2026",
+    img: "/narraseed_dashboard.png",
+    github: "https://github.com/anggatamr/narraseed-agents-league",
+    link: "https://youtu.be/KZp8UENKWPE"
   },
   {
     title: "Sistem Cerdas Pemetaan Risiko Demografi Pemuda",
